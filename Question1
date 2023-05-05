@@ -1,0 +1,45 @@
+#Operating Systems Assignment Q1
+#!/bin/bash
+
+while true
+do 
+
+  numbers=("List Files"   "Show Free Disk Space" "Show System Path" "Display Command History" "Backup Files" "Exit Program")
+   
+  select num in "${numbers[@]}"
+
+do
+  
+  case $num in
+      "List Files")
+            ls -l
+            break
+            ;;
+      "Show Free Disk Space")
+            df -h
+            break;;
+      "Show System Path")
+            echo $PATH
+            break
+            ;;
+      "Display Command History")
+            history
+            break
+            ;;
+      "Backup Files")
+          read -p "Enter Directory to Backup: " dir
+          mkdir BackupFolder
+          co -r $dir BackupFolder
+          ls -l BackupFolder
+          break
+          ;;
+      "Exit")
+          exit
+          ;;
+     *) echo "Not an Option. Please enter a number from 1-6.";;   
+
+    esac
+  
+  done
+
+done
